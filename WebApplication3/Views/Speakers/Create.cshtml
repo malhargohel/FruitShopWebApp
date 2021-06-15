@@ -1,4 +1,4 @@
-﻿@model CURDOperationWithImageUploadCore5_Demo.Models.Speaker
+﻿@model CURDOperationWithImageUploadCore5_Demo.ViewModels.SpeakerViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="SpeakerName" class="control-label"></label>
@@ -43,9 +43,12 @@
                 <span asp-validation-for="Venue" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProfilePicture" class="control-label"></label>
-                <input asp-for="ProfilePicture" class="form-control" />
-                <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                <label asp-for="SpeakerPicture" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="SpeakerPicture" class="custom-file-input" />
+                    <label class="custom-file-label" for="customFile">Choose File</label>
+                </div>
+                <span asp-validation-for="SpeakerPicture" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -59,5 +62,11 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script> 
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -1,4 +1,4 @@
-﻿@model CURDOperationWithImageUploadCore5_Demo.Models.Speaker
+﻿@model CURDOperationWithImageUploadCore5_Demo.ViewModels.SpeakerViewModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -48,10 +48,10 @@
             @Html.DisplayFor(model => model.Venue)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ProfilePicture)
+            @Html.DisplayNameFor(model => model.SpeakerPicture)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ProfilePicture)
+            @Html.DisplayFor(model => model.SpeakerPicture)
         </dd>
     </dl>
     
