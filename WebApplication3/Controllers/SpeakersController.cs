@@ -40,11 +40,8 @@ namespace CURDOperationWithImageUploadCore5_Demo.Controllers
             {
                 Id = speaker.Id,
                 SpeakerName = speaker.SpeakerName,
-                Qualification = speaker.Qualification,
-                Experience = speaker.Experience,
+
                 SpeakingDate = speaker.SpeakingDate,
-                SpeakingTime = speaker.SpeakingTime,
-                Venue = speaker.Venue,
                 ExistingImage = speaker.ProfilePicture
             };
 
@@ -71,11 +68,9 @@ namespace CURDOperationWithImageUploadCore5_Demo.Controllers
                 Speaker speaker = new Speaker
                 {
                     SpeakerName = model.SpeakerName,
-                    Qualification = model.Qualification,
-                    Experience = model.Experience,
+
                     SpeakingDate = model.SpeakingDate,
-                    SpeakingTime = model.SpeakingTime,
-                    Venue = model.Venue,
+
                     ProfilePicture = uniqueFileName
                 };
 
@@ -98,11 +93,9 @@ namespace CURDOperationWithImageUploadCore5_Demo.Controllers
             {
                 Id = speaker.Id,
                 SpeakerName = speaker.SpeakerName,
-                Qualification = speaker.Qualification,
-                Experience = speaker.Experience,
+
                 SpeakingDate = speaker.SpeakingDate,
-                SpeakingTime = speaker.SpeakingTime,
-                Venue = speaker.Venue,
+
                 ExistingImage = speaker.ProfilePicture
             };
 
@@ -121,11 +114,9 @@ namespace CURDOperationWithImageUploadCore5_Demo.Controllers
             {
                 var speaker = await db.Speakers.FindAsync(model.Id);
                 speaker.SpeakerName = model.SpeakerName;
-                speaker.Qualification = model.Qualification;
-                speaker.Experience = model.Experience;
+
                 speaker.SpeakingDate = model.SpeakingDate;
-                speaker.SpeakingTime = model.SpeakingTime;
-                speaker.Venue = model.Venue;
+
 
                 if (model.SpeakerPicture != null)
                 {
@@ -158,11 +149,9 @@ namespace CURDOperationWithImageUploadCore5_Demo.Controllers
             {
                 Id = speaker.Id,
                 SpeakerName = speaker.SpeakerName,
-                Qualification = speaker.Qualification,
-                Experience = speaker.Experience,
+
                 SpeakingDate = speaker.SpeakingDate,
-                SpeakingTime = speaker.SpeakingTime,
-                Venue = speaker.Venue,
+
                 ExistingImage = speaker.ProfilePicture
             };
             if (speaker == null)

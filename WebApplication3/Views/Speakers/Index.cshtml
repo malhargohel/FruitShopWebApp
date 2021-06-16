@@ -7,32 +7,23 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary rounded-0"><i class="fa fa-plus-circle"></i> Add New</a>
 </p>
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.ProfilePicture)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.SpeakerName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Qualification)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Experience)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.SpeakingDate)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SpeakingTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Venue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProfilePicture)
-            </th>
+  
+
             <th></th>
         </tr>
     </thead>
@@ -40,33 +31,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.SpeakerName)
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <img src="~/Uploads/@item.ProfilePicture" class="img-thumbnail" height="100" width="100" asp-append-version="true" />
+                </a>
             </td>
+            <td>@item.SpeakerName</td>
+            
+            <td>@item.SpeakingDate</td>
+
             <td>
-                @Html.DisplayFor(modelItem => item.Qualification)
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info rounded-0"><i class="fa fa-pencil-alt"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger rounded-0"><i class="fa fa-trash-alt"></i></a>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Experience)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpeakingDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpeakingTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Venue)
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.ProfilePicture)*@
-                <img src="~/Uploads/@item.ProfilePicture" class="img-thumbnail" height="100" width="100" asp-append-version="true" />
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+        </tr> 
 }
     </tbody>
 </table>
