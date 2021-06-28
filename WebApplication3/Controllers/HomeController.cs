@@ -10,6 +10,62 @@ using WebApplication3.Models;
 
 namespace WebApplication3.Controllers
 {
+
+
+        public class HomeController : Controller
+        {
+            private readonly ILogger<HomeController> _logger;
+
+            public HomeController(ILogger<HomeController> logger)
+            {
+                _logger = logger;
+            }
+
+            public IActionResult Index()
+            {
+                return View();
+            }
+
+            public IActionResult Privacy()
+            {
+                return View();
+            }
+
+            public IActionResult FreshProduce()
+            {
+                return View();
+            }
+
+            public IActionResult Specials()
+            {
+                return View();
+            }
+
+            public IActionResult Location()
+            {
+                return View();
+            }
+
+            public IActionResult Contact()
+            {
+                return View();
+            }
+
+            public IActionResult Shop()
+            {
+                return View();
+            }
+            [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+            public IActionResult Error()
+            {
+                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+    }
+
+
+
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -26,6 +82,12 @@ namespace WebApplication3.Controllers
             return View(speaker);
         }
 
+        public IActionResult LogIn()
+        {
+            var LogIn = db.Speakers.ToList();
+            return View(LogIn);
+        }
+
         public IActionResult Privacy()
         {
             return View();
@@ -37,4 +99,4 @@ namespace WebApplication3.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
-}
+
