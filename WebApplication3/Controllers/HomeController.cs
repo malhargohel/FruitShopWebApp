@@ -31,10 +31,6 @@ namespace WebApplication3.Controllers
             webHostEnvironment = hostEnvironment;
             }
 
-            public IActionResult Index()
-            {
-                return View();
-            }
 
             public IActionResult Privacy()
             {
