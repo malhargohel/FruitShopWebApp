@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplication3.Helpers;
 using WebApplication3.Models;
+using WebApplication3.ViewModels;
 
 namespace WebApplication3.Controllers
 {
@@ -59,7 +60,7 @@ namespace WebApplication3.Controllers
             }
         
         [HttpPost]
-        public ActionResult Contact(ContactToEmail contacttoemail, IFormFile[] attachments)
+        public ActionResult Contact(ContactToEmailViewModel contacttoemail, IFormFile[] attachments)
         {
             var body = "Name: " + contacttoemail.Name + "<br>Email: " + contacttoemail.Email + "<br>Message: " + contacttoemail.Message + "<br>";
             var mailHelper = new MailHelper(configuration);
@@ -85,7 +86,7 @@ namespace WebApplication3.Controllers
             {
                 ViewBag.msg = "Failed";
             }
-            return View("Sent", new ContactToEmail());
+            return View(contacttoemail);
 
 
         }
