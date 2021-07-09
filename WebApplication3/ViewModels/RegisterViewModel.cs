@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication3.Controllers
+namespace WebApplication3.ViewModels
 {
     public class RegisterViewModel
     {
@@ -19,8 +19,7 @@ namespace WebApplication3.Controllers
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password",
-            ErrorMessage = "Password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 }
