@@ -1,14 +1,17 @@
 ﻿@model IEnumerable<CURDOperationWithImageUploadCore5_Demo.Models.Speaker>
-
+@inject SignInManager<IdentityUser> SignInManager
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
-
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
 <p>
+
     <a asp-action="Create" class="btn btn-primary rounded-0"><i class="fa fa-plus-circle"></i> Add New</a>
 </p>
+}
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
