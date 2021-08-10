@@ -40,7 +40,7 @@
 
             <td>@item.SpeakingDate</td>
             
-            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin")  User.IsInRole("Staff"))
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
             {
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info rounded-0"><i class="fa fa-pencil-alt"></i></a>
