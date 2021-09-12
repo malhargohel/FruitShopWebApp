@@ -21,9 +21,16 @@ namespace CURDOperationWithImageUploadCore5_Demo.Controllers
             webHostEnvironment = hostEnvironment;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchBy, string search)
         {
-            return View(await db.Speakers.ToListAsync());
+            if (searchBy == "Date")
+            {
+                return View(await db.Speakers.Where(x => x.ProfilePicture == search || search == null).ToListAsync());
+            }
+            else
+            {
+                return View(await db.Speakers.Where(x => x.SpeakerName.StartsWith(search) || search == null).ToListAsync());
+            }
         }
 
         public async Task<IActionResult> Details(int? id)

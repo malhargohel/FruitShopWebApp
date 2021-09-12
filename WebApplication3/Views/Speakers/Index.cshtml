@@ -12,6 +12,18 @@
     <a asp-action="Create" class="btn btn-primary rounded-0"><i class="fa fa-plus-circle"></i> Add New</a>
 </p>
 }
+
+<p>
+    @using (Html.BeginForm("Index", "Speakers", FormMethod.Get))
+    {
+        @*<b>Search By:</b> @Html.RadioButton("searchBy", "name", true) <p>Name</p>
+            @Html.RadioButton("searchBy", "picture") <p>Date</p>*@
+        @Html.TextBox("search") <input type="submit" value="Search" />
+    }
+
+
+</p>
+
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
@@ -29,25 +41,37 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">
-                    <img src="~/Uploads/@item.ProfilePicture" class="img-thumbnail" height="100" width="100" asp-append-version="true" />
-                </a>
-            </td>
-            <td>@item.SpeakerName</td>
 
-            <td>@item.SpeakingDate</td>
-            
-            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="4">No rows match search criteria</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
             {
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info rounded-0"><i class="fa fa-pencil-alt"></i></a>
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger rounded-0"><i class="fa fa-trash-alt"></i></a>
-            </td>
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">
+                            <img src="~/Uploads/@item.ProfilePicture" class="img-thumbnail" height="100" width="100" asp-append-version="true" />
+                        </a>
+                    </td>
+                    <td>@item.SpeakerName</td>
+
+                    <td>@item.SpeakingDate</td>
+
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info rounded-0"><i class="fa fa-pencil-alt"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger rounded-0"><i class="fa fa-trash-alt"></i></a>
+                        </td>
+                    }
+                </tr>
+
             }
-        </tr> 
-}
-    </tbody>
+        }
+        </tbody>
 </table>
