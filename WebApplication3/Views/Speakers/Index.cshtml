@@ -18,7 +18,8 @@
     {
         @*<b>Search By:</b> @Html.RadioButton("searchBy", "name", true) <p>Name</p>
             @Html.RadioButton("searchBy", "picture") <p>Date</p>*@
-        @Html.TextBox("search") <input type="submit" value="Search" />
+        @Html.TextBox("search") @*<input type="submit" value="Search" />*@
+        <button type="submit" class="btn btn-primary">Search</button>
     }
 
 
